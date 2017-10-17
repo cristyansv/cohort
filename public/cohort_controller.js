@@ -150,6 +150,7 @@ module.controller('cohort_controller', function($scope, $element, Private) {
     }
 
     function showGraph($scope, id, meassures, data, valueFn, formatTime) {
+        console.log($scope, id, meassures, data, valueFn, formatTime);
 
         var svg = d3.select("#" + id)
             .append("svg")
@@ -288,6 +289,7 @@ module.controller('cohort_controller', function($scope, $element, Private) {
     }
 
     function getDateHistogram($vis) {
+        console.log('date histogram', $vis);
         var schema = $scope.vis.aggs.filter(function(agg) { return agg.schema.name == "cohort_date"; });
         if (schema[0].type.name == "date_histogram") {
             return schema[0].params.interval.val;
@@ -348,6 +350,7 @@ module.controller('cohort_controller', function($scope, $element, Private) {
             cumulativeData[d.date] = d.cumulativeValue;
         });
 
+        console.log(data);
         return data;
     }
 });
